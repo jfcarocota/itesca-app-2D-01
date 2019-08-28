@@ -42,14 +42,11 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Ground
-    uniqueID: 2538038943
+    uniqueID: 1728462669
     locked: 0
-  - name: Item
-    uniqueID: 3246138309
-    locked: 0
-  - name: Wall
-    uniqueID: 3084817455
+  - name: wall
+    uniqueID: 3526619835
     locked: 0
   - name: Player
-    uniqueID: 592398465
+    uniqueID: 161506719
     locked: 0
