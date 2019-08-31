@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-   [SerializeField, Range(0.1f, 10f)]
+    [SerializeField, Range(0.1f, 10f)]
     protected float moveSpeed;
 
     protected Animator animator;
@@ -15,30 +15,45 @@ public class NPC : MonoBehaviour
     [SerializeField]
     Player leader;
 
-    [SerializeField, Range(0.1f, 5f)]
-    float minDistanceFollow;
-    
-    
+    [SerializeField]
+    float minDist;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public virtual void Move()
+    protected void Update()
     {
-        moving = Vector2.Distance(leader.transform.position, transform.position) > minDistanceFollow;
+        if(moving)
+        {
+            animator.SetFloat("move-X", axis.x);
+            animator.SetFloat("move-Y", axis.y);
+        }
+
+        animator.SetBool("moving", moving);
+
+        spriteRenderer.flipX = axis.x < 0 ? true : axis.x > 0 ? false : spriteRenderer.flipX;
+    }
+
+    public virtual void Movement()
+    {
+        moving = Vector2.Distance(leader.transform.position, transform.position) > minDist;
         if(moving)
         {
             transform.position = Vector2.MoveTowards(transform.position, leader.transform.position, moveSpeed * Time.deltaTime);
-            animator.SetFloat("move-X", leader.Axis.x);
-            animator.SetFloat("move-Y", leader.Axis.y);
         }
-        animator.SetBool("moving", moving);
     }
 
-    protected void Update()
+    public Vector2 axis
     {
-        spriteRenderer.flipX = leader.Axis.x < 0 ? true : leader.Axis.x > 0 ? false : spriteRenderer.flipX;
+        get => new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+    }
+
+    public Player Leader
+    {
+        get => leader;
+        set => leader = value;
     }
 }
