@@ -2,36 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : NPC
 {
-    [SerializeField, Range(0.1f, 10f)]
-    float moveSpeed;
-
-    Animator animator;
-    SpriteRenderer spriteRenderer;
-
-    bool moving;
-
-    void Awake()
+    [SerializeField]
+    bool isNPC;
+    
+    new void Update()
     {
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        base.Update();
+        Move();
     }
 
-    void Update()
-    {
-        Vector2 axis = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        transform.Translate(axis * moveSpeed * Time.deltaTime);
-        moving = axis != Vector2.zero;
-
-        if(moving)
+    public override void Move()
+    {   
+        if(!isNPC)
         {
-            animator.SetFloat("move-X", axis.x);
-            animator.SetFloat("move-Y", axis.y);
+            transform.Translate(Axis * moveSpeed * Time.deltaTime);
+            moving = Axis != Vector2.zero;
+
+            if(moving)
+            {
+                animator.SetFloat("move-X", Axis.x);
+                animator.SetFloat("move-Y", Axis.y);
+            }
+
+            animator.SetBool("moving", moving);  
         }
+        else
+        {
+            base.Move();
+        }
+    }
 
-        animator.SetBool("moving", moving);
-
-        spriteRenderer.flipX = axis.x < 0 ? true : axis.x > 0 ? false : spriteRenderer.flipX;
+    public Vector2 Axis
+    {   
+        get => new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
     }
 }
