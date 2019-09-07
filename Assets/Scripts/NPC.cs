@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Core.BasicInput;
 
 public class NPC : MonoBehaviour
 {
@@ -28,13 +29,13 @@ public class NPC : MonoBehaviour
     {
         if(moving)
         {
-            animator.SetFloat("move-X", axis.x);
-            animator.SetFloat("move-Y", axis.y);
+            animator.SetFloat("move-X", BasicInput.AxisNormalized.x);
+            animator.SetFloat("move-Y", BasicInput.AxisNormalized.y);
         }
 
         animator.SetBool("moving", moving);
 
-        spriteRenderer.flipX = axis.x < 0 ? true : axis.x > 0 ? false : spriteRenderer.flipX;
+        spriteRenderer.flipX = BasicInput.AxisNormalized.x < 0 ? true : BasicInput.AxisNormalized.x > 0 ? false : spriteRenderer.flipX;
     }
 
     public virtual void Movement()
@@ -46,10 +47,6 @@ public class NPC : MonoBehaviour
         }
     }
 
-    public Vector2 axis
-    {
-        get => new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-    }
 
     public Player Leader
     {
