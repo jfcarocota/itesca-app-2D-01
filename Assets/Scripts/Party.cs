@@ -41,7 +41,7 @@ public class Party : MonoBehaviour
         for(int i = 1; i < currentParty.Count; i++)
         {
             currentParty[i].Leader = currentParty[i - 1];
-        }
+        }        
     }
 
     void Update()

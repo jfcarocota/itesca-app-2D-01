@@ -10,6 +10,7 @@ public class NPC : MonoBehaviour
 
     protected Animator animator;
     protected SpriteRenderer spriteRenderer;
+    protected Collider2D collider2D;
 
     protected bool moving;
 
@@ -23,6 +24,7 @@ public class NPC : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        collider2D = GetComponent<Collider2D>();
     }
 
     protected void Update()
@@ -52,5 +54,17 @@ public class NPC : MonoBehaviour
     {
         get => leader;
         set => leader = value;
+    }
+
+    public Collider2D Collider2D
+    {
+        get => collider2D;
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        if(other.collider.CompareTag("Player"))
+        {
+            Physics2D.IgnoreCollision(collider2D, other.collider);
+        }
     }
 }
