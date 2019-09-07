@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Core.BasicInput;
 using Core.Movements;
+using UnityEngine.SceneManagement;
 
 public class Player : NPC
 {
@@ -40,5 +41,12 @@ public class Player : NPC
     {
         get => isNPC;
         set => isNPC = value;
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+       if(other.CompareTag("Enemy"))
+       {
+           SceneManager.LoadScene("combatScene");
+       } 
     }
 }
