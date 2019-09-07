@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Core.BasicInput;
+using Core.Movements;
 
 public class Player : NPC
 {
@@ -20,7 +21,7 @@ public class Player : NPC
     {
         if(!isNPC)
         {
-            transform.Translate(BasicInput.AxisNormDeltaTime * moveSpeed);
+            Movements.PlayerBasicMovement(transform, BasicInput.AxisNormDeltaTime, moveSpeed);
             moving = BasicInput.AxisNormalized != Vector2.zero;
         }
         else
