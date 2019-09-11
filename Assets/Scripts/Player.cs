@@ -1,44 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Core.BasicInput;
-using Core.Movements;
 
 public class Player : NPC
 {
     [SerializeField]
     bool isNPC;
-    [SerializeField]
-    bool isLeader;
-
-    void Update()
+    
+    new void Update()
     {
-        Movement();
         base.Update();
+        Move();
     }
 
-    public override void Movement()
-    {
+    public override void Move()
+    {   
         if(!isNPC)
         {
-            Movements.PlayerBasicMovement(transform, BasicInput.AxisNormDeltaTime, moveSpeed);
-            moving = BasicInput.AxisNormalized != Vector2.zero;
+            transform.Translate(Axis * moveSpeed * Time.deltaTime);
+            moving = Axis != Vector2.zero;
+
+            if(moving)
+            {
+                animator.SetFloat("move-X", Axis.x);
+                animator.SetFloat("move-Y", Axis.y);
+            }
+
+            animator.SetBool("moving", moving);  
         }
         else
         {
-            base.Movement();
+            base.Move();
         }
     }
 
-    public bool IsLeader
-    {
-        get => isLeader;
-        set => isLeader = value;
-    }
-
-    public bool IsNPC
-    {
-        get => isNPC;
-        set => isNPC = value;
+    public Vector2 Axis
+    {   
+        get => new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
     }
 }
