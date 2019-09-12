@@ -14,7 +14,7 @@ public class NPC : MonoBehaviour
     protected bool moving;
 
     [SerializeField]
-    Player leader;
+    Player target;
 
     [SerializeField, Range(0.1f, 5f)]
     float minDistanceFollow;
@@ -31,12 +31,12 @@ public class NPC : MonoBehaviour
 
     public virtual void Move()
     {
-        moving = Vector2.Distance(leader.transform.position, transform.position) > minDistanceFollow;
+        moving = Vector2.Distance(target.transform.position, transform.position) > minDistanceFollow;
         if(moving)
         {
-            npcDirection = leader.transform.position - transform.position;
+            npcDirection = target.transform.position - transform.position;
             npcDirection.Normalize();
-            transform.position = Vector2.MoveTowards(transform.position, leader.transform.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
             animator.SetFloat("move-X", npcDirection.x);
             animator.SetFloat("move-Y", npcDirection.y);
         }
@@ -45,7 +45,7 @@ public class NPC : MonoBehaviour
     protected void Update()
     {
         animator.SetBool("moving", moving);
-        spriteRenderer.flipX = leader.Axis.x < 0 ? true : leader.Axis.x > 0 ? false : spriteRenderer.flipX;
+        spriteRenderer.flipX = Axis.x < 0 ? true : Axis.x > 0 ? false : spriteRenderer.flipX;
     }
 
     void OnCollisionEnter2D(Collision2D col2d)
@@ -54,5 +54,16 @@ public class NPC : MonoBehaviour
         {
             Physics2D.IgnoreCollision(col2d.collider, collider2D);
         }
+    }
+
+    public Player Target
+    {
+        get => target;
+        set => target = value;
+    }
+
+    protected Vector2 Axis
+    {   
+        get => new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
     }
 }

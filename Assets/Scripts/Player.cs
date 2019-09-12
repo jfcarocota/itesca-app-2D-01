@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : NPC
 {
     [SerializeField]
+    bool isLeader;
+    [SerializeField]
     bool isNPC;
     
     new void Update()
@@ -34,8 +36,15 @@ public class Player : NPC
         }
     }
 
-    public Vector2 Axis
-    {   
-        get => new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+    public bool IsLeader
+    {
+        get => isLeader;
+        set => isLeader = value;
+    }
+
+    public bool IsNPC
+    {
+        get => isNPC;
+        set => isNPC = value;
     }
 }
