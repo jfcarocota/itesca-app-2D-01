@@ -47,7 +47,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 494}
   m_MaxSize: {x: 14004, y: 14044}
   vertical: 0
-  controlID: 80
+  controlID: 122
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -67,8 +67,8 @@ MonoBehaviour:
     y: 0
     width: 466
     height: 947
-  m_MinSize: {x: 277, y: 72}
-  m_MaxSize: {x: 4002, y: 4022}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 494}
   m_MaxSize: {x: 10002, y: 14044}
   vertical: 1
-  controlID: 81
+  controlID: 58
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -342,20 +342,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Sprites/tiny-RPG-dungeon-files/PNG/spritesheets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Sprites/tiny-RPG-dungeon-files/PNG/spritesheets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\itesca-app-2D-01
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 522e0000
-    m_LastClickedID: 11858
-    m_ExpandedIDs: 00000000522e00005e2f0000fa2f0000743200003e3500007e3500005038000038390000a83a000044450000ee4500002e460000aa4600006e48000000ca9a3b
+    scrollPos: {x: 0, y: 205}
+    m_SelectedIDs: ec320000
+    m_LastClickedID: 13036
+    m_ExpandedIDs: 00000000ca2e0000d62f000072300000ec320000b6350000f6350000c8380000b0390000303a0000203b0000bc45000066460000a646000022470000c048000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -383,7 +383,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000522e00005e2f0000fa2f0000743200003e3500007e3500005038000038390000a83a000044450000ee4500002e460000aa4600006e480000
+    m_ExpandedIDs: 00000000ca2e0000d62f000072300000ec320000b6350000f6350000c8380000b0390000203b0000bc45000066460000a646000022470000c0480000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -411,7 +411,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000
+    m_ExpandedInstanceIDs: c6230000382f00002e4500004e300000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -504,9 +504,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 30450000
       m_LastClickedID: 0
-      m_ExpandedIDs: 74fbffff
+      m_ExpandedIDs: 2cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -566,9 +566,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -4.140697, y: 0.045648627, z: -9.949219}
+    m_Target: {x: -3.992634, y: -0.18719175, z: -10.107735}
     speed: 2
-    m_Value: {x: -4.140697, y: 0.045648627, z: -9.949219}
+    m_Value: {x: -3.992634, y: -0.18719175, z: -10.107735}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -601,9 +601,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 5.8412166
+    m_Target: 3.8595233
     speed: 2
-    m_Value: 5.8412166
+    m_Value: 3.8595233
   m_Ortho:
     m_Target: 1
     speed: 2
