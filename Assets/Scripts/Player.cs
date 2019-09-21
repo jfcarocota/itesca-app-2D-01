@@ -24,6 +24,11 @@ public class Player : NPC
         {
             Movements.PlayerBasicMovement(transform, BasicInput.AxisNormDeltaTime, moveSpeed);
             moving = BasicInput.AxisNormalized != Vector2.zero;
+            if(moving)
+            {
+                animator.SetFloat("move-X", BasicInput.AxisNormalized.x);
+                animator.SetFloat("move-Y", BasicInput.AxisNormalized.y);
+            }
         }
         else
         {

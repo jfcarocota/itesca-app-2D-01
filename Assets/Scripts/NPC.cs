@@ -14,6 +14,8 @@ public class NPC : MonoBehaviour
 
     protected bool moving;
 
+    protected Vector2 npcDirection;
+
     [SerializeField]
     Player leader;
 
@@ -29,12 +31,6 @@ public class NPC : MonoBehaviour
 
     protected void Update()
     {
-        if(moving)
-        {
-            animator.SetFloat("move-X", BasicInput.AxisNormalized.x);
-            animator.SetFloat("move-Y", BasicInput.AxisNormalized.y);
-        }
-
         animator.SetBool("moving", moving);
 
         spriteRenderer.flipX = BasicInput.AxisNormalized.x < 0 ? true : BasicInput.AxisNormalized.x > 0 ? false : spriteRenderer.flipX;
@@ -45,6 +41,10 @@ public class NPC : MonoBehaviour
         moving = Vector2.Distance(leader.transform.position, transform.position) > minDist;
         if(moving)
         {
+            npcDirection = leader.transform.position - transform.position;  
+            npcDirection.Normalize();
+            animator.SetFloat("move-X", npcDirection.x);
+            animator.SetFloat("move-Y", npcDirection.y);
             transform.position = Vector2.MoveTowards(transform.position, leader.transform.position, moveSpeed * Time.deltaTime);
         }
     }

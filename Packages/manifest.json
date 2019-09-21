@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.itesca.custom-package": "https://github.com/jfcarocota/itesca-custom-package.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.cinemachine": "2.3.4",
@@ -43,5 +44,11 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.itesca.custom-package": {
+      "hash": "281a1984c1f643d8b51c0c448ea8d0c25252ad7c",
+      "revision": "HEAD"
+    }
   }
 }
